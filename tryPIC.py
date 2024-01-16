@@ -19,7 +19,7 @@ def compress(input_folder, output_folder, max_size_kb=250):
                 resized_img = img.resize((new_width, new_height))
 
                 # Compress the resized image at least once
-                resized_img.save(output_path_jpg, quality=resized_img.info.get('quality', 65) - 5)
+                resized_img.save(output_path_jpg, quality=resized_img.info.get('quality', 70) - 5)
 
 
         except Exception as e:
@@ -33,14 +33,20 @@ def main():
     # 讓使用者輸入圖片資料夾路徑
     input_folder = st.text_input("輸入圖片的資料夾路徑:")
 
+    # 如果沒有輸入資料夾路徑，提醒使用者
+    if not input_folder:
+        st.warning("請輸入圖片的資料夾路徑。")
+        return
+
     # 讓使用者選擇輸出資料夾
-    output_folder = input_folder+"\\FinishCompress"
+    output_folder = input_folder + "\\FinishCompress"
 
     # 按鈕，當使用者按下後執行壓縮和轉換的操作
     if st.button("開始壓縮和轉換"):
         if input_folder and output_folder:
             compress(input_folder, output_folder)
             st.success("壓縮和轉換完成！")
+
 
 if __name__ == "__main__":
     main()
