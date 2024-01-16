@@ -6,6 +6,7 @@ def compress(input_folder, output_folder, max_size_kb=250):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
+    st.text(os.listdir(input_folder))
     for filename in os.listdir(input_folder):
         input_path = os.path.join(input_folder, filename)
         output_path_jpg = os.path.join(output_folder, filename)
@@ -32,15 +33,12 @@ def main():
 
     # 讓使用者輸入圖片資料夾路徑
     input_folder = st.text_input("輸入圖片的資料夾路徑:")
-
-    # 如果沒有輸入資料夾路徑，提醒使用者
-    if not input_folder:
-        st.warning("請輸入圖片的資料夾路徑。")
-        return
-
+    st.text(input_folder)
+    
     # 讓使用者選擇輸出資料夾
     output_folder = input_folder + "\\FinishCompress"
-
+    st.text(output_folder)
+    
     # 按鈕，當使用者按下後執行壓縮和轉換的操作
     if st.button("開始壓縮和轉換"):
         if input_folder and output_folder:
