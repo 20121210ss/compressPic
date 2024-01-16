@@ -39,10 +39,6 @@ def main():
     output_folder = input_folder + "\\FinishCompress"
     st.text(output_folder)
     
-    uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is not None:
-        st.text(uploaded_file)
-    
     # 按鈕，當使用者按下後執行壓縮和轉換的操作
     if st.button("開始壓縮和轉換"):
         if input_folder and output_folder:
