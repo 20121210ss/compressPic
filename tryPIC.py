@@ -33,10 +33,12 @@ def main():
 
     # 讓使用者輸入圖片資料夾路徑
     input_folder = st.text_input("輸入圖片的資料夾路徑:")
+    input_folder = os.path.abspath(input_folder)
     st.text(input_folder)
     
     # 讓使用者選擇輸出資料夾
     output_folder = input_folder + "\\FinishCompress"
+    output_folder = os.path.abspath(output_folder)
     st.text(output_folder)
     
     # 按鈕，當使用者按下後執行壓縮和轉換的操作
